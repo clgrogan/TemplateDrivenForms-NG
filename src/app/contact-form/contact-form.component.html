@@ -1,1 +1,21 @@
-<p>contact-form works!</p>
+<form>
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <!-- We will need to import the FormsModule into the app.module.ts file -->
+    <!-- Otherwise an error will occur on #firstName='ngModel': No directive found with exportAs 'ngModel'. -->
+    <input
+      ngModel
+      #firstName="ngModel"
+      (change)="log(firstName)"
+      name="firstName"
+      id="firstName"
+      type="text"
+      class="form-control"
+    />
+  </div>
+  <div class="form-group">
+    <label for="comment">Comment</label
+    ><textarea id="comment" cols="30" rows="10" class="form-control"></textarea>
+  </div>
+  <button class="btn btn-primary">Submit</button>
+</form>
