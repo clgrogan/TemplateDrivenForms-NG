@@ -9,4 +9,12 @@ export class ContactFormComponent {
   log = (receive) => {
     console.log(receive);
   };
+
+  submit = (theForm) => {
+    console.log("");
+    console.log("NgForm Object:", theForm);
+    console.log("NgForm > Value object:", theForm.value);
+    console.log("value.firstName:", theForm.value.firstName);
+    console.log("value.comment:", theForm.value.comment);
+  };
 }

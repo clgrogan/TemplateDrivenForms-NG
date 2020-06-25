@@ -1,5 +1,5 @@
 <section class="navbar alert-success">
-  <form>
+  <form #theForm="ngForm" (ngSubmit)="submit(theForm)">
     <section class="form-group">
       <label for="firstName">First Name</label>
       <!-- We will need to import the FormsModule into the app.module.ts file -->
@@ -37,7 +37,7 @@
       <label for="comment">Comment</label
       ><textarea
         ngModel
-        name="textArea"
+        name="comment"
         id="comment"
         cols="30"
         rows="10"
