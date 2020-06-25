@@ -1,36 +1,41 @@
 <section class="navbar alert-success">
   <form #theForm="ngForm" (ngSubmit)="submit(theForm)">
-    <section class="form-group">
-      <label for="firstName">First Name</label>
-      <!-- We will need to import the FormsModule into the app.module.ts file -->
-      <!-- Otherwise an error will occur on #firstName='ngModel': No directive found with exportAs 'ngModel'. -->
-      <input
-        required
-        minlength="3"
-        maxlength="10"
-        pattern="foxtrot"
-        ngModel
-        #banana="ngModel"
-        (change)="log(banana)"
-        name="firstName"
-        id="firstName"
-        type="text"
-        class="form-control"
-      />
-      <section
-        class="alert alert-danger"
-        *ngIf="banana.touched && !banana.valid"
-      >
-        <div *ngIf="banana.errors.required">First name is required.</div>
-        <div *ngIf="banana.errors.minlength">
-          First name minimum length is
-          {{ banana.errors.minlength.requiredLength }} characters.
-        </div>
-        <div *ngIf="banana.errors.pattern">
-          First name does not match the pattern, '{{
-            banana.errors.pattern.requiredPattern
-          }}', required.
-        </div>
+    <section ngModelGroup="contact" #contactGroup="ngModelGroup">
+      <div *ngIf="!contactGroup.valid">
+        <p class="alert alert-danger">
+          Something has gone wrong in the ngModelGroup 'contact'!
+        </p>
+      </div>
+      <section class="form-group">
+        <label for="firstName">First Name</label>
+        <input
+          required
+          minlength="3"
+          maxlength="10"
+          pattern="foxtrot"
+          ngModel
+          #banana="ngModel"
+          (change)="log(banana)"
+          name="firstName"
+          id="firstName"
+          type="text"
+          class="form-control"
+        />
+        <section
+          class="alert alert-danger"
+          *ngIf="banana.touched && !banana.valid"
+        >
+          <div *ngIf="banana.errors.required">First name is required.</div>
+          <div *ngIf="banana.errors.minlength">
+            First name minimum length is
+            {{ banana.errors.minlength.requiredLength }} characters.
+          </div>
+          <div *ngIf="banana.errors.pattern">
+            First name does not match the pattern, '{{
+              banana.errors.pattern.requiredPattern
+            }}', required.
+          </div>
+        </section>
       </section>
     </section>
     <section class="form-group">
