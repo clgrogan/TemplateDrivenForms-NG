@@ -49,6 +49,8 @@
         class="form-control"
       ></textarea>
     </section>
-    <button class="btn btn-primary btn-success">Submit</button>
+    <button class="btn btn-primary btn-success" [disabled]="theForm.invalid">
+      Submit
+    </button>
   </form>
 </section>
