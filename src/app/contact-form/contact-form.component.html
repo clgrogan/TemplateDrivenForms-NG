@@ -5,14 +5,33 @@
       <!-- We will need to import the FormsModule into the app.module.ts file -->
       <!-- Otherwise an error will occur on #firstName='ngModel': No directive found with exportAs 'ngModel'. -->
       <input
+        required
+        minlength="3"
+        maxlength="10"
+        pattern="foxtrot"
         ngModel
-        #firstName="ngModel"
-        (change)="log(firstName)"
+        #banana="ngModel"
+        (change)="log(banana)"
         name="firstName"
         id="firstName"
         type="text"
         class="form-control"
       />
+      <section
+        class="alert alert-danger"
+        *ngIf="banana.touched && !banana.valid"
+      >
+        <div *ngIf="banana.errors.required">First name is required.</div>
+        <div *ngIf="banana.errors.minlength">
+          First name minimum length is
+          {{ banana.errors.minlength.requiredLength }} characters.
+        </div>
+        <div *ngIf="banana.errors.pattern">
+          First name does not match the pattern, '{{
+            banana.errors.pattern.requiredPattern
+          }}', required.
+        </div>
+      </section>
     </section>
     <section class="form-group">
       <label for="comment">Comment</label
