@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { ContactMethodsService } from "../contact-methods.service";
 
 @Component({
   selector: "contact-form",
@@ -6,6 +7,10 @@ import { Component } from "@angular/core";
   styleUrls: ["./contact-form.component.css"],
 })
 export class ContactFormComponent {
+  contactMethods: any;
+  constructor(service: ContactMethodsService) {
+    this.contactMethods = service.getContactMethods();
+  }
   log = (receive) => {
     console.log(receive);
   };

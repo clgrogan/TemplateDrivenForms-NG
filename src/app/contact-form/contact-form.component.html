@@ -55,6 +55,19 @@
         mailing list.
       </label>
     </section>
+    <section class="form-group">
+      <label for="contactMethod">Contact Method</label>
+      <select
+        ngModel
+        name="contactMethod"
+        id="contactMethod"
+        class="form-control"
+        ><option value="">--select from drop-down--</option>
+        <option *ngFor="let method of contactMethods" [value]="method.id">{{
+          method.name
+        }}</option>
+      </select>
+    </section>
     <p class="alert alert-warning">
       Using interpolation we can display the NgForm object value as a JSON.
       <br />
