@@ -49,6 +49,18 @@
         class="form-control"
       ></textarea>
     </section>
+    <section class="checkbox">
+      <label>
+        <input ngModel type="checkbox" name="isSubscribed" /> Subscribe to
+        mailing list.
+      </label>
+    </section>
+    <p class="alert alert-warning">
+      Using interpolation we can display the NgForm object value as a JSON.
+      <br />
+      Code: theForm.value | json <br /><br />
+      {{ theForm.value | json }}
+    </p>
     <button class="btn btn-primary btn-success" [disabled]="theForm.invalid">
       Submit
     </button>
