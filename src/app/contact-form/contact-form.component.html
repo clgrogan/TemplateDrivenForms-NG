@@ -1,74 +1,130 @@
 <section class="navbar alert-success">
   <form #theForm="ngForm" (ngSubmit)="submit(theForm)">
     <section ngModelGroup="contact" #contactGroup="ngModelGroup">
-      <div *ngIf="!contactGroup.valid">
-        <p class="alert alert-danger">
-          Something has gone wrong in the ngModelGroup 'contact'!
-        </p>
-      </div>
-      <section class="form-group">
-        <label for="firstName">First Name</label>
-        <input
-          required
-          minlength="3"
-          maxlength="10"
-          pattern="foxtrot"
-          ngModel
-          #banana="ngModel"
-          (change)="log(banana)"
-          name="firstName"
-          id="firstName"
-          type="text"
-          class="form-control"
-        />
-        <section
-          class="alert alert-danger"
-          *ngIf="banana.touched && !banana.valid"
-        >
-          <div *ngIf="banana.errors.required">First name is required.</div>
-          <div *ngIf="banana.errors.minlength">
-            First name minimum length is
-            {{ banana.errors.minlength.requiredLength }} characters.
-          </div>
-          <div *ngIf="banana.errors.pattern">
-            First name does not match the pattern, '{{
-              banana.errors.pattern.requiredPattern
-            }}', required.
-          </div>
+      <section class="alert alert-success">
+        <h4>Section displays message based on *ngIf="!contactGroup.valid"</h4>
+        <div *ngIf="!contactGroup.valid">
+          <p class="alert alert-danger">
+            Something has gone wrong in the ngModelGroup 'contact'!
+          </p>
+        </div>
+      </section>
+      <section class="alert alert-success">
+        <h4>Input Type Text - Validated with display of specific messages.</h4>
+        <section class="form-group">
+          <label for="firstName">First Name</label>
+          <input
+            required
+            minlength="3"
+            maxlength="10"
+            pattern="foxtrot"
+            ngModel
+            #banana="ngModel"
+            (change)="log(banana)"
+            name="firstName"
+            id="firstName"
+            type="text"
+            class="form-control"
+          />
+          <section
+            class="alert alert-danger"
+            *ngIf="banana.touched && !banana.valid"
+          >
+            <div *ngIf="banana.errors.required">First name is required.</div>
+            <div *ngIf="banana.errors.minlength">
+              First name minimum length is
+              {{ banana.errors.minlength.requiredLength }} characters.
+            </div>
+            <div *ngIf="banana.errors.pattern">
+              First name does not match the pattern, '{{
+                banana.errors.pattern.requiredPattern
+              }}', required.
+            </div>
+          </section>
         </section>
       </section>
     </section>
-    <section class="form-group">
-      <label for="comment">Comment</label
-      ><textarea
-        ngModel
-        name="comment"
-        id="comment"
-        cols="30"
-        rows="10"
-        class="form-control"
-      ></textarea>
+
+    <section class="alert alert-success">
+      <h4>Text Area</h4>
+      <section class="form-group">
+        <label for="comment">Comment</label
+        ><textarea
+          ngModel
+          name="comment"
+          id="comment"
+          cols="30"
+          rows="10"
+          class="form-control"
+        ></textarea>
+      </section>
     </section>
-    <section class="checkbox">
-      <label>
-        <input ngModel type="checkbox" name="isSubscribed" /> Subscribe to
-        mailing list.
-      </label>
+
+    <section class="alert alert-success">
+      <h4>Checkbox</h4>
+      <section class="checkbox">
+        <label>
+          <input ngModel type="checkbox" name="isSubscribed" /> Subscribe to
+          mailing list.
+        </label>
+      </section>
     </section>
-    <section class="form-group">
-      <label for="contactMethod">Contact Method</label>
-      <select
-        required
-        multiple
-        ngModel
-        name="contactMethod"
-        id="contactMethod"
-        class="form-control"
-        ><option value="">--select from drop-down--</option>
-        <option *ngFor="let method of contactMethods" [value]="method.id">{{
-          method.name
-        }}</option>
-      </select>
+
+    <section class="alert alert-warning">
+      <h4>Drop-down List</h4>
+      <section class="form-group">
+        <label for="contactMethod">Contact Method</label>
+        <select
+          required
+          multiple
+          ngModel
+          name="contactMethod"
+          id="contactMethod"
+          class="form-control"
+          ><option value="">--select from drop-down--</option>
+          <option *ngFor="let method of contactMethods" [value]="method.id">{{
+            method.name
+          }}</option>
+        </select>
+      </section>
+    </section>
+
+    <section class="alert alert-warning">
+      <h4>Hard-coded Radio Buttons</h4>
+      <section class="radio">
+        <label>
+          <input ngModel type="radio" name="contactMethodRadioHC" value="1" />
+          Hard coded radio button 1.
+        </label>
+      </section>
+      <section class="radio">
+        <label>
+          <input ngModel type="radio" name="contactMethodRadioHC" value="2" />
+          Hard coded radio button 2.
+        </label>
+      </section>
+    </section>
+
+    <section class="alert alert-warning">
+      <h4>Dynamic Radio Buttons</h4>
+      <section class="radio" *ngFor="let contactMethod of contactMethods">
+        <label>
+          <input
+            ngModel
+            type="radio"
+            name="contactMethodRadioDynamic"
+            [value]="contactMethod.id"
+          />
+          {{ contactMethod.name }}
+        </label>
+      </section>
+    </section>
+
+    <section class="radio" *ngFor="let element of contactMethods">
+      <!-- <label> -->
+      <input ngModel type="radio" name="nameOfInput" [value]="element.id" />
+      {{ element.name }}
+      <!-- </label> -->
     </section>
     <p class="alert alert-warning">
       Using interpolation we can display the NgForm object value as a JSON.
