@@ -38,7 +38,7 @@ Includes the following topics related to Angular Template-driven Forms utilizing
 ## Deployment
 
 - Hosted on [Netlify](https://app.netlify.com/) utilizing [GitHub](https://app.netlify.com/)'s Netlify App
-- URL [https://angular-directive-app.netlify.app/](https://angular-directive-app.netlify.app/)
+- URL [https://angular-template-driven-forms.netlify.app/](https://angular-template-driven-forms.netlify.app)
 
 ## Authors
 
